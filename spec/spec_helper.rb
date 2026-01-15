@@ -5,6 +5,9 @@ Coveralls.wear!
 
 require 'adhearsion_cpa'
 
+Punchblock.logger = Logger.new(STDOUT)
+Punchblock.logger.level = Logger::DEBUG
+
 RSpec.configure do |config|
   config.color_enabled = true
   config.tty = true
