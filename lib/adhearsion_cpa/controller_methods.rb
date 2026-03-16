@@ -25,9 +25,9 @@ module AdhearsionCpa
     # @example Asynchronous wait for a dtmf
     #   detect_tone :dtmf { |detected| logger.info "Beep! Customer pushed #{detected.inspect}"}
     # @example Asynchronous wait for dtmf presses, running the block multiple times if multiple signals are detected
-    def detect_tone!(*arguments)
+    def detect_tone!(*arguments, &block)
       options = arguments.last.is_a?(Hash) && arguments.count > 1 ? arguments.pop : {}
-      ToneDetector.new(self).detect_tones arguments, options.merge(async: true), &Proc.new
+      ToneDetector.new(self).detect_tones arguments, options.merge(async: true), &block
     end
   end
 end
