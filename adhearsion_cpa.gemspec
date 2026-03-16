@@ -17,13 +17,13 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
 
-  s.add_runtime_dependency %q<adhearsion>, ["~> 3.0.0.rc2"]
+  s.add_runtime_dependency %q<adhearsion>, ["~> 4.1.0.rc1"]
   s.add_runtime_dependency %q<punchblock>, [">= 3.0.0.rc2"]
   s.add_runtime_dependency %q<activesupport>, [">= 3.0.10"]
 
-  s.add_development_dependency %q<coveralls>, ['>= 0']
-  s.add_development_dependency %q<bundler>, ["~> 1.0"]
-  s.add_development_dependency %q<rspec>, ["~> 2.5"]
+  s.add_development_dependency %q<simplecov>, ['>= 0.17']
+  s.add_development_dependency %q<bundler>, [">= 1.0"]
+  s.add_development_dependency %q<rspec>, [">= 4.0.0.beta1"]
   s.add_development_dependency %q<rake>, [">= 0"]
   s.add_development_dependency %q<guard-rspec>
  end
