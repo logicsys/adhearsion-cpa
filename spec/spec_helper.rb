@@ -1,4 +1,5 @@
 require 'adhearsion'
+require 'punchblock'
 
 require 'simplecov'
 SimpleCov.start
@@ -9,11 +10,8 @@ Punchblock.logger = Logger.new(STDOUT)
 Punchblock.logger.level = Logger::DEBUG
 
 RSpec.configure do |config|
-  config.color_enabled = true
-  config.tty = true
 
-  config.filter_run focus: true
-  config.run_all_when_everything_filtered = true
+  config.filter_run_when_matching :focus
 
   config.before(:all) do
     Adhearsion::Plugin.initializers.each do |plugin_initializer|
