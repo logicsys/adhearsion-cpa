@@ -1,7 +1,7 @@
 require 'adhearsion'
 
-require 'coveralls'
-Coveralls.wear!
+require 'simplecov'
+SimpleCov.start
 
 require 'adhearsion_cpa'
 
