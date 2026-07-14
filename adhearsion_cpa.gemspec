@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
 
-  s.add_runtime_dependency %q<adhearsion>, ["~> 4.1.0.rc1"]
-  s.add_runtime_dependency %q<punchblock>, [">= 3.0.0.rc2"]
+  s.add_runtime_dependency %q<adhearsion>, ["~> 4.1", ">= 4.1.1"]
+  s.add_runtime_dependency %q<punchblock>, ["~> 3.0", ">= 3.0.1"]
   s.add_runtime_dependency %q<activesupport>, ["~> 8.0"]
 
   s.add_development_dependency %q<simplecov>, ['>= 0.17']
