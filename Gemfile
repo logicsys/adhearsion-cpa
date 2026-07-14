@@ -1,13 +1,14 @@
-source "http://rubygems.org"
+source "https://rubygems.org"
 
-gem 'adhearsion', github: "logicsys/adhearsion", branch: "develop"
-gem 'punchblock', github: "logicsys/punchblock", branch: "develop"
+# Local paths for forks with unpushed commits (revert to github develop pins once pushed)
+gem 'adhearsion', path: '../adhearsion'
+gem 'punchblock', path: '../punchblock'
 
-gem 'reel', github: "logicsys/reel", branch: "develop"
-gem 'reel-rack', github: "logicsys/reel-rack", branch: "develop"
+gem 'reel', path: '../reel'
+gem 'reel-rack', path: '../reel-rack'
 gem 'ruby_ami', github: "logicsys/ruby_ami", branch: "develop"
-gem 'celluloid', github: "logicsys/celluloid", branch: "develop"
-gem 'celluloid-io', github: "logicsys/celluloid-io", branch: "develop"
+gem 'celluloid', path: '../celluloid'
+gem 'celluloid-io', path: '../celluloid-io'
 gem 'blather', github: "logicsys/blather", branch: "develop"
 
 gemspec
