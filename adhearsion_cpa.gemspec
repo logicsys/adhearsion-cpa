@@ -8,18 +8,18 @@ Gem::Specification.new do |s|
   s.authors     = ["Justin Aiken"]
   s.email       = ["60tonangel@gmail.com"]
   s.license     = 'MIT'
+  s.required_ruby_version = ">= 3.3.0"
   s.homepage    = "https://github.com/grasshoppergroup/adhearsion-cpa"
   s.summary     = %q{A plugin for adding cpa to Adhearsion}
   s.description = %q{A plugin for adding cpa to Adhearsion}
 
-  s.rubyforge_project = "adhearsion_cpa"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
 
   s.add_runtime_dependency %q<adhearsion>, ["~> 4.1.0.rc1"]
   s.add_runtime_dependency %q<punchblock>, [">= 3.0.0.rc2"]
-  s.add_runtime_dependency %q<activesupport>, [">= 3.0.10"]
+  s.add_runtime_dependency %q<activesupport>, ["~> 8.0"]
 
   s.add_development_dependency %q<simplecov>, ['>= 0.17']
   s.add_development_dependency %q<bundler>, [">= 1.0"]
