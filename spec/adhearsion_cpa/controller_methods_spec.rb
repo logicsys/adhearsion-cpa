@@ -58,6 +58,25 @@ RSpec.describe AdhearsionCpa::ControllerMethods do
           subject.detect_tone({speech: {maxTime: 4000, minSpeechDuration: 4000}, beep: {}}, timeout: 5, foo: :bar)
         end
       end
+
+      context "with a tone name containing URL metacharacters" do
+        it "raises ArgumentError instead of building an injected grammar URL" do
+          expect {
+            subject.detect_tone "beep:1.0?inject=bad", timeout: 5
+          }.to raise_error(ArgumentError, /Invalid CPA tone name/)
+        end
+      end
+
+      context "with option values containing URL metacharacters" do
+        it "URL-encodes them in the grammar URL" do
+          expect(mock_call).to receive(:write_and_await_response) do |component|
+            expect(component.grammars.map(&:url)).to eq(["urn:xmpp:rayo:cpa:speech:1?foo=a%3Fb%3Dc%3Bd;terminate=true"])
+          end
+          expect_any_instance_of(Punchblock::Component::Input).to receive(:complete_event).and_return(mock_complete_event)
+
+          subject.detect_tone :speech, foo: "a?b=c;d", timeout: 5
+        end
+      end
     end
 
     describe "#detect_tone!" do

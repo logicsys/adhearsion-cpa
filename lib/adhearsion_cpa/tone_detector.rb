@@ -1,5 +1,9 @@
+require 'uri'
+
 module AdhearsionCpa
   class ToneDetector
+
+    VALID_TONE_NAME = /\A[a-zA-Z0-9_-]+\z/
 
     attr_accessor :tones, :timeout
 
@@ -68,16 +72,23 @@ module AdhearsionCpa
 
     def build_grammar_for(tone, opts={})
       opts.merge! @options
+      unless tone.to_s =~ VALID_TONE_NAME
+        raise ArgumentError, "Invalid CPA tone name: #{tone.inspect}"
+      end
       ns_url = "#{Punchblock::BASE_RAYO_NAMESPACE}:cpa:#{tone}:#{Punchblock::RAYO_VERSION}"
       opts.each_with_index do |(k, v), i|
         if i == 0
-          ns_url << "?#{k}=#{v}"
+          ns_url << "?#{encode_component k}=#{encode_component v}"
         else
-          ns_url << ";#{k}=#{v}"
+          ns_url << ";#{encode_component k}=#{encode_component v}"
         end
       end
 
       Punchblock::Component::Input::Grammar.new url: ns_url
+    end
+
+    def encode_component(value)
+      URI.encode_www_form_component value.to_s
     end
 
     def async?
